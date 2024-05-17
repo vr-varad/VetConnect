@@ -15,6 +15,14 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Please enter your password'],
+    },
+    isAdmin : {
+        type: Boolean,
+        default: false
+    },
+    isDoctor : {
+        type: Boolean,
+        default: false
     }
 }, {timestamps: true});
 

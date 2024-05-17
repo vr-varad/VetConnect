@@ -26,7 +26,7 @@ const Register = () => {
       }
     } catch (error) {
       dispatch(removeLoading())
-      console.error(error)
+      message.error('Something went wrong')
     }
 
   }

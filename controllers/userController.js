@@ -48,10 +48,13 @@ const auth = async(req,res)=>{
         if(!user){
             return res.json({success: false,message: 'User not found'});
         }
-        res.status(200).json({success: true,data : {
+        const userWithOutPassword = {
             name: user.name,
-            email: user.email
-        },message: `Welcome ${user.name}!!`});
+            email: user.email,
+            isAdmin: user.isAdmin,
+            isDoctor: user.isDoctor
+        }
+        res.status(200).json({success: true,data : userWithOutPassword,message: `Welcome ${user.name}!!`});
     }catch(error){
         console.log(error);
         res.status(500).json({success: false,message: error.message});

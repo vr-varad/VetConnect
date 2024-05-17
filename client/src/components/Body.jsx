@@ -4,10 +4,12 @@ import doc2 from "../assets/doctor2.png";
 import doc3 from "../assets/doctor3.png";
 import doc4 from "../assets/doctor4.png";
 import Slideshow from "../utils/Slideshow";
+import {useNavigate} from 'react-router-dom'
+
 const Body = () => {
   const imageUrl = [doc1, doc2, doc3, doc4];
   const [currentImage, setCurrentImage] = useState(0);
-  
+  const navigate  = useNavigate()
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -28,7 +30,7 @@ const Body = () => {
             Make vet appointments a breeze with our simple and convenient online
             booking system.
           </p>
-          <button className="bg-white font-mono text-blue-600 py-4 px-10 rounded-lg hover:bg-blue-950 hover:text-white">
+          <button onClick={()=>{navigate('/book')}} className="bg-white font-mono text-blue-600 py-4 px-10 rounded-lg hover:bg-blue-950 hover:text-white">
             Book An Appointment Now!!
           </button>
         </div>

@@ -5,6 +5,9 @@ import Register from './pages/Register'
 import {useSelector} from 'react-redux'
 import Spinner from './components/Spinner.jsx'
 import './App.css'
+import BookAppointment from './pages/BookAppointment.jsx'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
+import Profile from './redux/Profile.jsx'
 
 function App() {
   const {loading} = useSelector(state=>state.alert)
@@ -16,6 +19,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/book" element={<ProtectedRoute><BookAppointment/></ProtectedRoute>}/>
+        <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+
       </Routes>)}
     </BrowserRouter>
     </>

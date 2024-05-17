@@ -8,12 +8,11 @@ const HomePage = () => {
   const getUserData = async () => {
     try {
       const token = localStorage.getItem('token')
-      const response = await axios.get('/api/v1/user', {
+      await axios.get('/api/v1/user', {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
-      console.log(response.data)
     } catch (error) {
       
     }
