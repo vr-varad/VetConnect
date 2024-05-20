@@ -4,7 +4,7 @@ import {Form, Input, message} from 'antd'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import {showLoading,removeLoading} from '../redux/features/alertSlice'
+import {showLoading,removeLoading} from '../../redux/features/alertSlice'
 
 const Register = () => {
   const navigate = useNavigate()

@@ -22,7 +22,7 @@ const Navbar = () => {
           Home
         </a>
         <a
-          href="/findaDoctor"
+          href="/doctoRegister"
           className="hidden lg:block text-slate-400 hover:text-blue-600 hover:scale-110"
         >
           Doctor

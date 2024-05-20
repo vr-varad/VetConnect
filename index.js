@@ -5,6 +5,7 @@ require('dotenv').config()
 const connectDB = require('./config/db')
 
 const userRouter = require('./routes/userRoutes')
+const doctorRouter = require('./routes/doctorRoutes')
 
 const PORT = process.env.PORT || 5000
 
@@ -16,6 +17,7 @@ app.use(morgan('dev'))
 
 // Routes
 app.use('/api/v1/user',userRouter)
+app.use('/api/v1/doctor',doctorRouter)
 
 const start = async () => {
     try {
