@@ -10,7 +10,6 @@ module.exports = async (req, res, next) => {
 
         if (token && isCustomAuth) {
             decodedData = jwt.verify(token, process.env.JWT_SECRET);
-
             req.body.userId = decodedData?.id;
         } else {
             return res.json({success: false, message: 'Unauthorized' });

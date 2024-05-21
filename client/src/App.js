@@ -8,7 +8,8 @@ import './App.css'
 import BookAppointment from './pages/BookAppointment.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import DoctorRegister from './pages/doctorPages/DoctorRegister.jsx'
-import userProfile from './pages/userPages/userProfile.jsx'
+import UserProfile from './pages/userPages/UserProfile.jsx'
+import DoctorProfile from './pages/doctorPages/DoctorProfile.jsx'
 
 function App() {
   const {loading} = useSelector(state=>state.alert)
@@ -21,8 +22,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/doctoRegister" element={<DoctorRegister/>} />
         <Route path="/register" element={<Register />} />
+        <Route path="/apply" element={<DoctorRegister />} />
         <Route path="/book" element={<ProtectedRoute><BookAppointment/></ProtectedRoute>}/>
-        <Route path="/profile" element={<ProtectedRoute><userProfile/></ProtectedRoute>}/>
+        <Route path="/profile" element={<ProtectedRoute><UserProfile/></ProtectedRoute>}/>
+        <Route path='/doctorProfile' element={<DoctorProfile/>}/>
 
       </Routes>)}
     </BrowserRouter>

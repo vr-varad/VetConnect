@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.user);
+  const { doctor } = useSelector((state) => state.doctor);
+  console.log(doctor)
+  console.log(user)
   const navigate = useNavigate();
   return (
     <div className="flex flex-row justify-around items-center py-8">
@@ -46,7 +49,7 @@ const Navbar = () => {
           Contact
         </a>
       </div>
-      {user ? <div className="flex flex-row  gap-10 justify-center items-center">
+      {user || doctor ? <div className="flex flex-row  gap-10 justify-center items-center">
         <button
           onClick={() => {
             navigate("/book");
@@ -57,7 +60,7 @@ const Navbar = () => {
         </button>
         <div className="flex flex-col justify-center items-center gap-3">
         <i class="fa-solid fa-user fa-2x"></i>
-        <Link to={'/profile'} className="font-bold font-mono text-md">{user?.name ? user?.name : "Profile"}</Link>
+        {doctor ? <Link to={'/doctorProfile'} className="font-bold font-mono text-md">{doctor?.name ? doctor?.name : "Profile"}</Link>: <Link to={'/profile'} className="font-bold font-mono text-md">{user?.name ? user?.name : "Profile"}</Link>}
         </div>
       </div> : <button
           onClick={() => {

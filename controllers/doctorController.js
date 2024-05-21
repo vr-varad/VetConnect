@@ -73,19 +73,38 @@ const login = async (req, res)=>{
     }
 }
 
+const updateProfile = async (req, res) => {
+    try {
+        const {} = req.body;
+        const id = req.params.id;
+        const doctor = await Doctor.findById(id);
+        if(!doctor){
+            return res.json({success: false,message: 'Doctor not found'});
+        }
+        const updatedDoctor = await Doctor.findByIdAndUpdate(id,req.body,{new: true});
+        res.status(200).json({success: true,message: 'Profile updated successfully',updatedDoctor});
+    }catch (error) {
+        console.error(error);
+        res.status(500).json({success: false,message: error.message});
+    }
+}
+
 const docAuth = async (req, res) => {
     try {
         const doctor = await Doctor.findById(req.body.userId);
+
+        console.log(doctor);
         
-        if (!doctor || !doctor.isVerified) {
+        if (!doctor || !doctor.verified) {
             return res.json({ success: false, message: 'Doctor not found' });
         }
 
         const doctorWithoutPassword = {
             name: doctor.fullName,
             email: doctor.emailAddress,
-            lisenceNumber: doctor.lisenceNumber,
-            isDoctor: doctor.isVerified,
+            doctorId: doctor._id,
+            lisenceNumber: doctor.licenseNumber,
+            isDoctor: doctor.verified,
         };
         
         res.status(200).json({ success: true, data: doctorWithoutPassword, message: `Welcome ${doctor.fullName}!!` });
@@ -98,5 +117,6 @@ const docAuth = async (req, res) => {
 module.exports = {
     login,
     register,
-    docAuth
+    docAuth,
+    updateProfile
 }
